@@ -1,0 +1,55 @@
+<mat-card class="mb-3">
+    <div class="d-flex">
+        <a routerLink="/profile/{{ post.username }}">
+            <img class="img-avt mr-2" src="https://vnn-imgs-f.vgcloud.vn/2019/11/09/07/meo-black-golden-1.jpg" alt="">
+        </a>
+        <div>
+            <mat-card-title>
+                <a routerLink="/profile/{{ post.username }}">{{ post.username }}</a>
+            </mat-card-title>
+            <mat-card-subtitle>
+                {{ computeTime(post.time).time }}
+            </mat-card-subtitle>
+        </div>
+        <div class="ml-auto">
+            <button mat-icon-button [matMenuTriggerFor]="menuOption">
+                <i class="fas fa-ellipsis-v"></i>
+            </button>
+        </div>
+    </div>
+    <mat-card-content class="d-flex flex-column">
+        <div>
+            <button mat-stroked-button *ngFor="let tag of post.tags" class="tag-item mr-1" color="primary">
+                {{ tag }}
+            </button>
+        </div>
+        <br>
+        <div>
+            {{ post.text }}
+        </div>
+        <br>
+        <img mat-card-image src="https://vnn-imgs-f.vgcloud.vn/2019/11/09/07/meo-black-golden-1.jpg" alt="">
+    </mat-card-content>
+    <mat-card-actions class="d-flex align-items-center pr-3">
+        <button mat-icon-button color="primary" (click)="upVote(post.id)">
+            <i class="fas fa-angle-up"></i>
+            {{ post.votes.up }}
+        </button>
+        <button mat-icon-button color="warn" (click)="downVote(post.id)">
+            <i class="fas fa-angle-down"></i>
+            {{ post.votes.down }}
+        </button>
+        <button mat-icon-button color="link" (click)="clipPost(post.id)">
+            <i class="fas fa-paperclip"></i>
+            {{ post.clipped }}
+        </button>
+        <div class="ml-auto">
+            <span class="text-secondary">{{ computeTime(post.time).date }}</span>
+        </div>
+    </mat-card-actions>
+</mat-card>
+
+<mat-menu #menuOption [xPosition]="'before'">
+    <button mat-menu-item>Report</button>
+    <button mat-menu-item>Chat</button>
+</mat-menu>

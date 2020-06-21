@@ -27,6 +27,21 @@ $mewocare-ui-theme: mat-light-theme($mewocare-ui-primary, $mewocare-ui-accent, $
 @include angular-material-theme($mewocare-ui-theme);
 
 /* You can add global styles to this file, and also import other style files */
+@import 'bootstrap/scss/bootstrap.scss';
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+button:focus {
+    outline: none;
+}
+
+a {
+    color: initial;
+    &:focus {
+        color: initial;
+    }
+    &:hover {
+        color: initial;
+    }
+}
