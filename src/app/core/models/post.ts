@@ -9,6 +9,9 @@ interface Post {
     votes: PostVote;
     clipped: number;
     time: Date;
+    isClipped?: boolean;
+    isUpVote?: boolean;
+    isDownVote?: boolean;
 }
 
 interface PostAttachment {

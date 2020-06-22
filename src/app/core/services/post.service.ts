@@ -11,7 +11,7 @@ export class PostService {
 
   public getPosts(): Observable<Post[]> {
     return new Observable(sub => {
-      sub.next([
+      const posts = [
         {
           id: '12345678',
           username: 'abc',
@@ -36,7 +36,10 @@ export class PostService {
             down: 1
           },
           clipped: 6,
-          time: new Date('Sat Jun 20 2020 18:03:03 GMT+0700')
+          time: new Date('Sat Jun 20 2020 18:03:03 GMT+0700'),
+          isUpVote: true,
+          isDownVote: false,
+          isClipped: false
         },
         {
           id: '12345679',
@@ -62,7 +65,10 @@ export class PostService {
             down: 1
           },
           clipped: 3,
-          time: new Date('Sat Jun 20 2020 18:03:03 GMT+0700')
+          time: new Date('Sat Jun 20 2020 18:03:03 GMT+0700'),
+          isUpVote: false,
+          isDownVote: true,
+          isClipped: false
         },
         {
           id: '12345670',
@@ -88,9 +94,14 @@ export class PostService {
             down: 1
           },
           clipped: 2,
-          time: new Date('Sat Jun 20 2020 18:03:03 GMT+0700')
+          time: new Date('Sat Jun 20 2020 18:03:03 GMT+0700'),
+          isUpVote: false,
+          isDownVote: true,
+          isClipped: true
         }
-      ])
+      ];
+
+      sub.next(posts)
     })
   }
 }

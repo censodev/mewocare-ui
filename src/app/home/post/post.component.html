@@ -31,16 +31,20 @@
         <img mat-card-image src="https://vnn-imgs-f.vgcloud.vn/2019/11/09/07/meo-black-golden-1.jpg" alt="">
     </mat-card-content>
     <mat-card-actions class="d-flex align-items-center pr-3">
-        <button mat-icon-button color="primary" (click)="upVote(post.id)">
+        <button mat-icon-button [color]="post.isUpVote ? 'accent' : 'link'" (click)="upVote(post.id)">
             <i class="fas fa-angle-up"></i>
             {{ post.votes.up }}
         </button>
-        <button mat-icon-button color="warn" (click)="downVote(post.id)">
+        <button mat-icon-button [color]="post.isDownVote ? 'accent' : 'link'" (click)="downVote(post.id)">
             <i class="fas fa-angle-down"></i>
             {{ post.votes.down }}
         </button>
-        <button mat-icon-button color="link" (click)="clipPost(post.id)">
+        <button mat-icon-button [color]="post.isClipped ? 'accent' : 'link'" (click)="clipPost(post.id)">
             <i class="fas fa-paperclip"></i>
+            {{ post.clipped }}
+        </button>
+        <button mat-icon-button [color]="'link'" (click)="clipPost(post.id)">
+            <i class="fas fa-comment-alt"></i>
             {{ post.clipped }}
         </button>
         <div class="ml-auto">
@@ -48,6 +52,7 @@
         </div>
     </mat-card-actions>
 </mat-card>
+<app-comment-box></app-comment-box>
 
 <mat-menu #menuOption [xPosition]="'before'">
     <button mat-menu-item>Report</button>

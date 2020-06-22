@@ -9,19 +9,23 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDividerModule } from '@angular/material/divider';
 import { PostComponent } from './post/post.component';
+import { CommentBoxComponent } from '../shared/comment-box/comment-box.component';
 
+const MATERIAL_MODULES = [
+  MatCardModule,
+  MatButtonModule,
+  MatCheckboxModule,
+  MatDividerModule,
+  MatInputModule,
+  MatMenuModule
+];
 
 @NgModule({
-  declarations: [HomeComponent, PostComponent],
+  declarations: [HomeComponent, PostComponent, CommentBoxComponent],
   imports: [
-    CommonModule,
+  CommonModule,
     HomeRoutingModule,
-    MatCardModule,
-    MatButtonModule,
-    MatCheckboxModule,
-    MatDividerModule,
-    MatInputModule,
-    MatMenuModule
+    ...MATERIAL_MODULES
   ]
 })
 export class HomeModule { }
