@@ -1,3 +1,5 @@
+import { SideMenuComponent } from './side-menu/side-menu.component';
+import { CommentBoxModule } from './../shared/comment-box/comment-box.module';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatInputModule } from '@angular/material/input';
 import { HomeComponent } from './home.component';
@@ -9,7 +11,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDividerModule } from '@angular/material/divider';
 import { PostComponent } from './post/post.component';
-import { CommentBoxComponent } from '../shared/comment-box/comment-box.component';
+import { RecommendedShopComponent } from './recommended-shop/recommended-shop.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 const MATERIAL_MODULES = [
   MatCardModule,
@@ -17,15 +21,23 @@ const MATERIAL_MODULES = [
   MatCheckboxModule,
   MatDividerModule,
   MatInputModule,
-  MatMenuModule
+  MatMenuModule,
+  MatGridListModule,
+  MatSidenavModule
 ];
 
 @NgModule({
-  declarations: [HomeComponent, PostComponent, CommentBoxComponent],
+  declarations: [
+    HomeComponent,
+    PostComponent,
+    RecommendedShopComponent,
+    SideMenuComponent
+  ],
   imports: [
-  CommonModule,
+    CommonModule,
+    ...MATERIAL_MODULES,
     HomeRoutingModule,
-    ...MATERIAL_MODULES
+    CommentBoxModule
   ]
 })
 export class HomeModule { }

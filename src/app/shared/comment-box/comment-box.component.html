@@ -1,1 +1,26 @@
-<p>comment-box works!</p>
+<div class="d-flex flex-column">
+    <div class="d-flex flex-wrap">
+        <img class="img-avt mr-2" src="https://vnn-imgs-f.vgcloud.vn/2019/11/09/07/meo-black-golden-1.jpg" alt="">
+        <div class="d-flex flex-grow-1">
+            <mat-form-field class="w-100">
+                <mat-label>Leave a comment</mat-label>
+                <input [(ngModel)]="commentText" matInput matTextareaAutosize="true" (keyup.enter)="submitComment()">
+            </mat-form-field>
+        </div>
+        <div class="d-flex ml-auto">
+            <button class="bg-transparent border-0">
+                <i class="far fa-grin-alt"></i>
+            </button>
+            <button class="bg-transparent border-0">
+                <i class="far fa-file"></i>
+            </button>
+        </div>
+    </div>
+    <div *ngFor="let cmt of commentList" class="d-flex comment-item">
+        <img class="img-avt mr-2" src="{{ cmt.avatar }}" alt="">
+        <div class="d-flex flex-column pr-5">
+            <a routerLink="/profile/{{ cmt.username }}" class="font-weight-bold">{{ cmt.username }}</a>
+            <p>{{ cmt.text }}</p>
+        </div>
+    </div>
+</div>

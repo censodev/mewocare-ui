@@ -1,12 +1,12 @@
-<mat-card class="mb-3">
+<mat-card class="mb-3 pb-2">
     <div class="d-flex">
         <a routerLink="/profile/{{ post.username }}">
             <img class="img-avt mr-2" src="https://vnn-imgs-f.vgcloud.vn/2019/11/09/07/meo-black-golden-1.jpg" alt="">
         </a>
         <div>
-            <mat-card-title>
-                <a routerLink="/profile/{{ post.username }}">{{ post.username }}</a>
-            </mat-card-title>
+            <a routerLink="/profile/{{ post.username }}">
+                <h2 class="mb-1 font-weight-bold">{{ post.username }}</h2>
+            </a>
             <mat-card-subtitle>
                 {{ computeTime(post.time).time }}
             </mat-card-subtitle>
@@ -17,7 +17,7 @@
             </button>
         </div>
     </div>
-    <mat-card-content class="d-flex flex-column">
+    <mat-card-content class="d-flex flex-column m-0">
         <div>
             <button mat-stroked-button *ngFor="let tag of post.tags" class="tag-item mr-1" color="primary">
                 {{ tag }}
@@ -30,31 +30,33 @@
         <br>
         <img mat-card-image src="https://vnn-imgs-f.vgcloud.vn/2019/11/09/07/meo-black-golden-1.jpg" alt="">
     </mat-card-content>
-    <mat-card-actions class="d-flex align-items-center pr-3">
-        <button mat-icon-button [color]="post.isUpVote ? 'accent' : 'link'" (click)="upVote(post.id)">
-            <i class="fas fa-angle-up"></i>
+    <mat-card-actions class="d-flex flex-wrap align-items-center pr-3 m-0">
+        <button mat-icon-button [color]="post.isUpVote ? 'accent' : 'link'" (click)="upVote()">
+            <i class="fas fa-caret-up"></i>
             {{ post.votes.up }}
         </button>
-        <button mat-icon-button [color]="post.isDownVote ? 'accent' : 'link'" (click)="downVote(post.id)">
-            <i class="fas fa-angle-down"></i>
+        <button mat-icon-button [color]="post.isDownVote ? 'accent' : 'link'" (click)="downVote()">
+            <i class="fas fa-caret-down"></i>
             {{ post.votes.down }}
         </button>
-        <button mat-icon-button [color]="post.isClipped ? 'accent' : 'link'" (click)="clipPost(post.id)">
+        <button mat-icon-button [color]="post.isClipped ? 'accent' : 'link'" (click)="clipPost()">
             <i class="fas fa-paperclip"></i>
             {{ post.clipped }}
         </button>
-        <button mat-icon-button [color]="'link'" (click)="clipPost(post.id)">
+        <button mat-icon-button [color]="'link'" (click)="isCommentHidden = !isCommentHidden">
             <i class="fas fa-comment-alt"></i>
-            {{ post.clipped }}
+            {{ post.comments }}
         </button>
         <div class="ml-auto">
             <span class="text-secondary">{{ computeTime(post.time).date }}</span>
         </div>
     </mat-card-actions>
-</mat-card>
-<app-comment-box></app-comment-box>
+    
+    <app-comment-box *ngIf="isCommentHidden"></app-comment-box>
 
-<mat-menu #menuOption [xPosition]="'before'">
+</mat-card>
+
+<mat-menu #menuOption xPosition="before">
     <button mat-menu-item>Report</button>
     <button mat-menu-item>Chat</button>
 </mat-menu>

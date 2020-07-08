@@ -4,32 +4,32 @@
   </div>
   <div class="menu-bar">
     <button mat-button color="primary" [routerLink]="['/']" routerLinkActive="router-link-active" >Home</button>
-    <button mat-button color="primary" [routerLink]="['/']" routerLinkActive="router-link-active" >Services</button>
-    <button mat-button color="primary" [routerLink]="['/facility']" routerLinkActive="router-link-active" >Map</button>
+    <button mat-button color="primary" [routerLink]="['/']" routerLinkActive="router-link-active" >Shops</button>
+    <button mat-button color="primary" [routerLink]="['/']" routerLinkActive="router-link-active" >Emergency</button>
   </div>
   <div class="profile-bar">
-    <button matBadge="12" matBadgePosition="above before" matBadgeColor="accent" mat-mini-fab [matMenuTriggerFor]="menuChat" color="primary" class="mr-2">
+    <button matBadge="12" matBadgePosition="above after" matBadgeColor="accent" mat-mini-fab [matMenuTriggerFor]="menuChat" color="primary" class="mr-2">
       <i class="fas fa-comments"></i>
     </button>
-    <button matBadge="5" matBadgePosition="above before" matBadgeColor="accent" mat-mini-fab [matMenuTriggerFor]="menuNotification" color="primary" class="mr-2">
+    <button matBadge="5" matBadgePosition="above after" matBadgeColor="accent" mat-mini-fab [matMenuTriggerFor]="menuNotification" color="primary" class="mr-2">
       <i class="fas fa-bell"></i>
     </button>
-    <button matBadge="7" matBadgePosition="above before" matBadgeColor="accent" mat-mini-fab [matMenuTriggerFor]="menuPersonal" color="primary">
+    <button mat-mini-fab [matMenuTriggerFor]="menuPersonal" color="primary">
       <i class="fas fa-user-circle"></i>
     </button>
   </div>
 </mat-toolbar>
 
-<mat-menu #menuChat [xPosition]="'before'" class="mt-2">
+<mat-menu #menuChat xPosition="before" class="mt-2">
   <button mat-menu-item>Chat</button>
 </mat-menu>
 
-<mat-menu #menuNotification [xPosition]="'before'" class="mt-2">
+<mat-menu #menuNotification xPosition="before" class="mt-2">
   <button mat-menu-item>Noti</button>
 </mat-menu>
 
-<mat-menu #menuPersonal [xPosition]="'before'" class="mt-2">
+<mat-menu #menuPersonal xPosition="before" class="mt-2">
   <button mat-menu-item>Profile</button>
-  <button mat-menu-item>Write blog</button>
   <button mat-menu-item>Dashboard</button>
+  <button mat-menu-item>Logout</button>
 </mat-menu>

@@ -1,3 +1,5 @@
+import { Comment } from './comment';
+
 interface Post {
     id: string;
     username: string;
@@ -5,9 +7,9 @@ interface Post {
     tags: string[];
     text: string;
     attachments: PostAttachment[];
-    comments: PostComment[];
     votes: PostVote;
     clipped: number;
+    comments: number;
     time: Date;
     isClipped?: boolean;
     isUpVote?: boolean;
@@ -19,15 +21,9 @@ interface PostAttachment {
     url: string;
 }
 
-interface PostComment {
-    username: string;
-    profileUrl: string;
-    text: string;
-}
-
 interface PostVote {
     up: number;
     down: number;
 }
 
-export { Post, PostAttachment, PostComment, PostVote }
+export { Post, PostAttachment, PostVote }

@@ -45,3 +45,24 @@ a {
         color: initial;
     }
 }
+
+.scroll-hidden {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.mat-text-primary {
+    color: #3f51b5;
+}
+
+.mat-text-link {
+    color: #000000;
+}
+
+.mat-text-faded {
+    color: rgba(0, 0, 0, 0.54);
+}

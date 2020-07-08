@@ -1,0 +1,22 @@
+<mat-card class="mb-3">
+    <div class="d-flex align-items-center">
+        <img class="img-avt" src="{{ shop.logo }}" alt="">
+        <div class="d-flex flex-column pl-3">
+            <h2 class="m-0">{{ shop.name }}</h2>
+            <div class="star-wrapper">{{ computeStars(shop.stars) }}</div>
+            <div class="mat-text-faded">{{ computeTime(shop.openTime) }} - {{ computeTime(shop.closeTime) }}</div>
+            <div class="mat-text-link">{{ shop.address }}</div>
+        </div>
+    </div>
+    <mat-card-content class="m-0">
+        <div class="pt-3">
+            <span [innerHTML]="computeDescription(shop.description)"></span>
+            <a href="#" class="mat-text-primary font-weight-bold" (click)="extendDescription()" *ngIf="shop.description.length > descriptionLimit && !isDescriptionExtended">(Read more)</a>
+        </div>
+        <img mat-card-image class="mt-3" src="{{ shop.banner }}" alt="">
+    </mat-card-content>
+    <mat-card-actions class="d-flex justify-content-right">
+        <button mat-stroked-button color="primary">Visit</button>
+        <button mat-stroked-button color="primary">Contact</button>
+    </mat-card-actions>
+</mat-card>

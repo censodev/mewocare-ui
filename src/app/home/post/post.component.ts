@@ -1,3 +1,4 @@
+import { PostService } from './../../core/services/post.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { Post } from 'src/app/core/models/post';
 
@@ -9,7 +10,9 @@ import { Post } from 'src/app/core/models/post';
 export class PostComponent implements OnInit {
   @Input() post: Post;
 
-  constructor() { }
+  isCommentHidden: boolean = false;
+
+  constructor(private postService: PostService) { }
 
   ngOnInit(): void {
   }
@@ -23,16 +26,44 @@ export class PostComponent implements OnInit {
     return { time, date }
   }
 
-  upVote(id: string) {
-    this.post.votes.up++;
+  upVote() {
+    if (!this.post.isUpVote) {
+      this.post.votes.up++;
+      this.post.isUpVote = !this.post.isUpVote;
+    }
+
+    if (this.post.isDownVote) {
+      this.post.votes.down--;
+      this.post.isDownVote = !this.post.isDownVote;
+    }
+    this.updatePost(this.post);
   }
 
-  downVote(id: string) {
-    this.post.votes.down++;
+  downVote() {
+    if (!this.post.isDownVote) {
+      this.post.votes.down++;
+      this.post.isDownVote = !this.post.isDownVote;
+    }
+
+    if (this.post.isUpVote) {
+      this.post.votes.up--;
+      this.post.isUpVote = !this.post.isUpVote;
+    }
+    this.updatePost(this.post);
   }
 
-  clipPost(id: string) {
+  clipPost() {
+    if (this.post.isClipped) {
+      this.post.clipped--;
+    } else {
+      this.post.clipped++;
+    }
+    this.post.isClipped = !this.post.isClipped;
+    this.updatePost(this.post);
+  }
 
+  updatePost(post: Post): void {
+    this.postService.updatePost(post);
   }
 
 }
