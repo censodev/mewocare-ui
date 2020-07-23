@@ -1,3 +1,4 @@
+import { MatChipsModule } from '@angular/material/chips';
 import { SideMenuComponent } from './side-menu/side-menu.component';
 import { CommentBoxModule } from './../shared/comment-box/comment-box.module';
 import { MatMenuModule } from '@angular/material/menu';
@@ -14,6 +15,8 @@ import { PostComponent } from './post/post.component';
 import { RecommendedShopComponent } from './recommended-shop/recommended-shop.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatDialogModule } from '@angular/material/dialog';
+import { PostEditorModule } from '../shared/post-editor/post-editor.module';
 
 const MATERIAL_MODULES = [
   MatCardModule,
@@ -23,7 +26,9 @@ const MATERIAL_MODULES = [
   MatInputModule,
   MatMenuModule,
   MatGridListModule,
-  MatSidenavModule
+  MatSidenavModule,
+  MatDialogModule,
+  MatChipsModule,
 ];
 
 @NgModule({
@@ -31,13 +36,14 @@ const MATERIAL_MODULES = [
     HomeComponent,
     PostComponent,
     RecommendedShopComponent,
-    SideMenuComponent
+    SideMenuComponent,
   ],
   imports: [
     CommonModule,
     ...MATERIAL_MODULES,
     HomeRoutingModule,
-    CommentBoxModule
+    CommentBoxModule,
+    PostEditorModule
   ]
 })
 export class HomeModule { }

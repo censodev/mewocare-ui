@@ -15,9 +15,9 @@ const MATERIAL_MODULES = [
   declarations: [CommentBoxComponent],
   imports: [
     CommonModule,
-    ProfileRoutingModule,
     ...MATERIAL_MODULES,
-    FormsModule
+    ProfileRoutingModule,
+    FormsModule,
   ],
   exports: [CommentBoxComponent]
 })

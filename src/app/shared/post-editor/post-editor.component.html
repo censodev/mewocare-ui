@@ -1,0 +1,44 @@
+<h1 mat-dialog-title class="position-relative text-center">
+    Create topic
+    <button class="position-absolute btn-close text-primary" mat-icon-button mat-dialog-close>
+        <svg width="2rem" height="2rem" viewBox="0 0 16 16" class="bi bi-x" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z"/>
+            <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z"/>
+        </svg>
+    </button>
+</h1>
+<mat-dialog-content>
+  <mat-form-field class="w-100">
+    <mat-chip-list #chipList aria-label="tag selection">
+      <mat-chip
+        *ngFor="let tag of selectedTags"
+        [selectable]="tagSelectable"
+        [removable]="tagRemovable"
+        (removed)="removeTag(tag)">
+        {{ tag }}
+        <svg matChipRemove *ngIf="tagRemovable" width="2rem" height="2rem" viewBox="0 0 16 16" class="bi bi-x" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z"/>
+          <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z"/>
+        </svg>
+      </mat-chip>
+      <input
+        placeholder="Add some tags (at least 1, maximum 5)"
+        #tagInput
+        [formControl]="tagFrmCtrl"
+        [matAutocomplete]="auto"
+        [matChipInputFor]="chipList"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        (matChipInputTokenEnd)="addTag($event)">
+    </mat-chip-list>
+    <mat-autocomplete #auto (optionSelected)="selectTag($event)">
+      <mat-option *ngFor="let tag of filterTagsList | async" [value]="tag">
+        {{ tag }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  <ckeditor [(ngModel)]="ckData" [editor]="ckEditor" [config]="ckEditorConfig"></ckeditor>
+</mat-dialog-content>
+<div mat-dialog-actions>
+  <button class="w-100" mat-raised-button color="primary">Post</button>
+  
+</div>

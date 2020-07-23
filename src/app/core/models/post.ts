@@ -7,13 +7,12 @@ interface Post {
     tags: string[];
     text: string;
     attachments: PostAttachment[];
-    votes: PostVote;
+    likes: number;
     clipped: number;
     comments: number;
     time: Date;
     isClipped?: boolean;
-    isUpVote?: boolean;
-    isDownVote?: boolean;
+    isLiked?: boolean;
 }
 
 interface PostAttachment {
@@ -21,9 +20,4 @@ interface PostAttachment {
     url: string;
 }
 
-interface PostVote {
-    up: number;
-    down: number;
-}
-
-export { Post, PostAttachment, PostVote }
+export { Post, PostAttachment }

@@ -1,6 +1,7 @@
 import { CommentService } from '../../core/services/comment.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { Comment } from '../../core/models/comment';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-comment-box',
@@ -8,20 +9,15 @@ import { Comment } from '../../core/models/comment';
   styleUrls: ['./comment-box.component.scss']
 })
 export class CommentBoxComponent implements OnInit {
-  @Input() data: Comment[];
   @Input() postId: string;
 
-  commentList: Comment[];
+  commentList: Observable<Comment[]>;
   commentText: string;
 
   constructor(private commentService: CommentService) { }
 
   ngOnInit(): void {
-    if (!this.data) {
-      this.commentList = this.commentService.getCommentList(this.postId);
-    } else {
-      this.commentList = this.data;
-    }    
+    this.commentList = this.commentService.getCommentList(this.postId);
   }
 
   submitComment(): void {

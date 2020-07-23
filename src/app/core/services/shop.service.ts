@@ -1,5 +1,7 @@
 import { Shop } from './../models/shop';
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import { delay } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -52,11 +54,7 @@ export class ShopService {
 
   constructor() { }
 
-  public getRecommendedShops(): Shop[] {
-    let rs: Shop[];
-
-    rs = this.shops;
-
-    return rs;
+  public getRecommendedShops(): Observable<Shop[]> {
+    return of(this.shops).pipe(delay(500));
   }
 }

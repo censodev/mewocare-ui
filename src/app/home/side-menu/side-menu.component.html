@@ -1,4 +1,17 @@
 <div class="d-flex flex-column p-3">
-    <button mat-raised-button color="primary" class="px-5 py-1">Post something</button>
+    <button mat-raised-button color="primary" (click)="openPostEditor()" class="px-5 py-1">Post something</button>
     <button mat-stroked-button color="primary" class="px-5 py-1 mt-3">Tags</button>
+    <div class="d-flex flex-wrap pt-3">
+        <h3 class="m-0 text-center w-100">- Selected tags -</h3>
+        <mat-chip-list class="pt-2">
+            <ng-container *ngFor="let tag of tagsList; index as i">
+                <mat-chip *ngIf="i%2==0">
+                    <span class="text-primary">{{ tag }}</span>
+                </mat-chip>
+                <mat-chip *ngIf="i%2!=0" class="bg-primary">
+                    <span class="text-white">{{ tag }}</span>
+                </mat-chip>
+            </ng-container>
+        </mat-chip-list>
+    </div>
 </div>

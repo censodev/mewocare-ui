@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Post } from '../models/post';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { delay } from 'rxjs/operators';
 
 let POSTS: Post[] = [
   {
@@ -15,15 +16,11 @@ let POSTS: Post[] = [
         type: 'image'
       }
     ],
-    votes: {
-      up: 11,
-      down: 1
-    },
+    likes: 5,
     clipped: 6,
     comments: 3,
     time: new Date('Sat Jun 20 2020 18:03:03 GMT+0700'),
-    isUpVote: true,
-    isDownVote: false,
+    isLiked: true,
     isClipped: false
   },
   {
@@ -38,15 +35,11 @@ let POSTS: Post[] = [
         type: 'image'
       }
     ],
-    votes: {
-      up: 11,
-      down: 1
-    },
+    likes: 1,
     clipped: 3,
     comments: 3,
     time: new Date('Sat Jun 20 2020 18:03:03 GMT+0700'),
-    isUpVote: false,
-    isDownVote: true,
+    isLiked: false,
     isClipped: false
   },
   {
@@ -61,15 +54,11 @@ let POSTS: Post[] = [
         type: 'image'
       }
     ],
-    votes: {
-      up: 11,
-      down: 1
-    },
+   likes: 0,
     clipped: 2,
     comments: 3,
     time: new Date('Sat Jun 20 2020 18:03:03 GMT+0700'),
-    isUpVote: false,
-    isDownVote: false,
+    isLiked: false,
     isClipped: true
   }
 ];
@@ -81,12 +70,8 @@ export class PostService {
 
   constructor() { }
 
-  public getPosts(): Post[] {
-    let rs: Post[] = [];
-    new Observable(sub => {
-      sub.next(POSTS)
-    }).subscribe((res: Post[]) => rs = res);
-    return rs;
+  public getPosts(): Observable<Post[]> {
+    return of(POSTS).pipe(delay(1000));
   }
 
   public updatePost(post: Post): void {

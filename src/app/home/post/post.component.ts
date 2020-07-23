@@ -26,29 +26,13 @@ export class PostComponent implements OnInit {
     return { time, date }
   }
 
-  upVote() {
-    if (!this.post.isUpVote) {
-      this.post.votes.up++;
-      this.post.isUpVote = !this.post.isUpVote;
+  doLike() {
+    if (!this.post.isLiked) {
+      this.post.likes++;
+    } else {
+      this.post.likes--;
     }
-
-    if (this.post.isDownVote) {
-      this.post.votes.down--;
-      this.post.isDownVote = !this.post.isDownVote;
-    }
-    this.updatePost(this.post);
-  }
-
-  downVote() {
-    if (!this.post.isDownVote) {
-      this.post.votes.down++;
-      this.post.isDownVote = !this.post.isDownVote;
-    }
-
-    if (this.post.isUpVote) {
-      this.post.votes.up--;
-      this.post.isUpVote = !this.post.isUpVote;
-    }
+    this.post.isLiked = !this.post.isLiked;
     this.updatePost(this.post);
   }
 

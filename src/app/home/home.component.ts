@@ -3,6 +3,7 @@ import { PostService } from './../core/services/post.service';
 import { Component, OnInit } from '@angular/core';
 import { Post } from '../core/models/post';
 import { ShopService } from '../core/services/shop.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -10,8 +11,8 @@ import { ShopService } from '../core/services/shop.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  posts: Post[];
-  recommendedShops: Shop[];
+  posts: Observable<Post[]>;
+  recommendedShops: Observable<Shop[]>;
 
   constructor(private postService: PostService, private shopService: ShopService) { }
 

@@ -1,17 +1,13 @@
 <section class="bg-light d-flex">
-    <mat-sidenav-container>
-        <mat-sidenav mode="side" opened>
-            <app-side-menu></app-side-menu>
-        </mat-sidenav>
-        <mat-sidenav-content>
-            <div class="row px-3 pt-3">
-                <div class="col-7 home-col scroll-hidden">
-                    <app-post *ngFor="let post of posts" [post]="post"></app-post>
-                </div>
-                <div class="col-5 home-col scroll-hidden">
-                    <app-recommended-shop *ngFor="let shop of recommendedShops" [shop]="shop"></app-recommended-shop>
-                </div>
-            </div>
-        </mat-sidenav-content>
-      </mat-sidenav-container>
+  <mat-sidenav-container>
+    <mat-sidenav mode="side" opened class="position-fixed w-20">
+      <app-side-menu></app-side-menu>
+    </mat-sidenav>
+    <mat-sidenav mode="side" opened position="end" class="position-fixed w-30 border-0 bg-transparent">
+      <app-recommended-shop *ngFor="let shop of recommendedShops | async" [shop]="shop"></app-recommended-shop>
+    </mat-sidenav>
+    <mat-sidenav-content class="px-3">
+      <app-post *ngFor="let post of posts | async" [post]="post"></app-post>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
 </section>
