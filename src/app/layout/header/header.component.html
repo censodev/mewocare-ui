@@ -3,22 +3,22 @@
     <img class="logo-img" src="/assets/logo/logo_200x200.png" alt="">
   </div>
   <div class="menu-bar flex-grow-1 text-center">
-    <button mat-button color="primary" [routerLink]="['/']" routerLinkActive="router-link-active" >Home</button>
-    <button mat-button color="primary" [routerLink]="['/']" routerLinkActive="router-link-active" >Shops</button>
-    <button mat-button color="primary" [routerLink]="['/']" routerLinkActive="router-link-active" >Emergency</button>
+    <button mat-button color="primary" routerLink="/" routerLinkActive="router-link-active" >Home</button>
+    <button mat-button color="primary" routerLink="/" routerLinkActive="router-link-active" >Shops</button>
+    <button mat-button color="primary" routerLink="/" routerLinkActive="router-link-active" >Emergency</button>
   </div>
   <div class="profile-bar">
-    <button matBadge="9+" matBadgePosition="above after" matBadgeColor="accent" mat-mini-fab [matMenuTriggerFor]="menuChat" color="primary" class="mr-2">
+    <button matBadge="9+" matBadgePosition="above after" matBadgeColor="accent" mat-mini-fab [matMenuTriggerFor]="menuChat" color="primary" class="mr-2 box-shadow-none">
       <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-chat-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
         <path d="M8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6-.097 1.016-.417 2.13-.771 2.966-.079.186.074.394.273.362 2.256-.37 3.597-.938 4.18-1.234A9.06 9.06 0 0 0 8 15z"/>
       </svg>
     </button>
-    <button matBadge="5" matBadgePosition="above after" matBadgeColor="accent" mat-mini-fab [matMenuTriggerFor]="menuNotification" color="primary" class="mr-2">
+    <button matBadge="5" matBadgePosition="above after" matBadgeColor="accent" mat-mini-fab [matMenuTriggerFor]="menuNotification" color="primary" class="mr-2 box-shadow-none">
       <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-bell-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
         <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
       </svg>
     </button>
-    <button mat-mini-fab [matMenuTriggerFor]="menuPersonal" color="primary">
+    <button mat-mini-fab [matMenuTriggerFor]="menuPersonal" color="primary" class="box-shadow-none">
       <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-person-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
         <path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
       </svg>
@@ -27,11 +27,15 @@
 </mat-toolbar>
 
 <mat-menu #menuChat xPosition="before" class="mt-2">
-  <button mat-menu-item>Chat</button>
+  <button mat-menu-item class="h-100 py-0 px-1" *ngFor="let chat of chats">
+    <app-notification-box type="chat" [notification]="chat"></app-notification-box>
+  </button>
 </mat-menu>
 
 <mat-menu #menuNotification xPosition="before" class="mt-2">
-  <button mat-menu-item>Noti</button>
+  <button mat-menu-item class="h-100 py-0 px-1" *ngFor="let notification of notifications">
+    <app-notification-box type="notification" [notification]="notification"></app-notification-box>
+  </button>
 </mat-menu>
 
 <mat-menu #menuPersonal xPosition="before" class="mt-2">

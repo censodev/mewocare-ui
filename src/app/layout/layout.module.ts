@@ -1,3 +1,4 @@
+import { NotificationBoxModule } from './../shared/notification-box/notification-box.module';
 import { RouterModule } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { NgModule } from '@angular/core';
@@ -9,16 +10,21 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatBadgeModule } from '@angular/material/badge';
 
+const MATERIAL_MODULES = [
+  MatToolbarModule,
+  MatMenuModule,
+  MatButtonModule,
+  MatInputModule,
+  MatBadgeModule,
+]
+
 @NgModule({
   declarations: [HeaderComponent, FooterComponent,],
   imports: [
     CommonModule,
-    MatToolbarModule,
-    MatMenuModule,
-    MatButtonModule,
-    MatInputModule,
-    MatBadgeModule,
-    RouterModule
+    ...MATERIAL_MODULES,
+    RouterModule,
+    NotificationBoxModule,
   ],
   exports: [HeaderComponent, FooterComponent]
 })
