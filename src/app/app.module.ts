@@ -1,3 +1,5 @@
+import { ChatBoxModule } from './shared/chat-box/chat-box.module';
+import { ChatBoxContainerDirective } from './core/directives/chat-box-container.directive';
 import { LayoutModule } from './layout/layout.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -14,12 +16,14 @@ const MATERIAL_MODULES = [
 @NgModule({
   declarations: [
     AppComponent,
+    ChatBoxContainerDirective
   ],
   imports: [
     ...MATERIAL_MODULES,
     BrowserModule,
     HttpClientModule,
     LayoutModule,
+    ChatBoxModule,
     BrowserAnimationsModule,
     AppRoutingModule,
   ],

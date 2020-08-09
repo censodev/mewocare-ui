@@ -3,7 +3,7 @@ import { Post } from '../models/post';
 import { Observable, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
 
-let POSTS: Post[] = [
+const POSTS: Post[] = [
   {
     id: '12345678',
     username: '@mei',

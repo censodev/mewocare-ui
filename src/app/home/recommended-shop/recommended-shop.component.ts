@@ -1,6 +1,7 @@
-import { Time, SlicePipe } from '@angular/common';
+import { Time } from '@angular/common';
 import { Component, OnInit, Input } from '@angular/core';
 import { Shop } from 'src/app/core/models/shop';
+import { ChatService } from 'src/app/core/services/chat.service';
 
 @Component({
   selector: 'app-recommended-shop',
@@ -12,7 +13,7 @@ export class RecommendedShopComponent implements OnInit {
   descriptionLimit = 300;
   isDescriptionExtended = false;
 
-  constructor() { }
+  constructor(private chatService: ChatService) { }
 
   ngOnInit(): void {
   }
@@ -26,7 +27,7 @@ export class RecommendedShopComponent implements OnInit {
   }
 
   computeStars(starNumber: number) {
-    let rs = '★★★★★☆☆☆☆☆';
+    const rs = '★★★★★☆☆☆☆☆';
     return rs.slice(5 - starNumber, 10 - starNumber);
   }
 
@@ -34,10 +35,14 @@ export class RecommendedShopComponent implements OnInit {
     if (this.isDescriptionExtended)
       return des
     else
-      return des.length > this.descriptionLimit ? des.slice(0, this.descriptionLimit) + "..." : des;
+      return des.length > this.descriptionLimit ? des.slice(0, this.descriptionLimit) + '...' : des;
   }
 
   extendDescription() {
     this.isDescriptionExtended = true;
+  }
+
+  openChatBox(contactId: string) {
+    this.chatService.onChatBoxOpened.emit(contactId);
   }
 }

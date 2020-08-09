@@ -14,7 +14,8 @@ export class HomeComponent implements OnInit {
   posts: Observable<Post[]>;
   recommendedShops: Observable<Shop[]>;
 
-  constructor(private postService: PostService, private shopService: ShopService) { }
+  constructor(private postService: PostService,
+              private shopService: ShopService) { }
 
   ngOnInit(): void {
     this.posts = this.postService.getPosts();
