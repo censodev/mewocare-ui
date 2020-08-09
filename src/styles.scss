@@ -27,7 +27,7 @@ $mewocare-ui-theme: mat-light-theme($mewocare-ui-primary, $mewocare-ui-accent, $
 @include angular-material-theme($mewocare-ui-theme);
 
 /* You can add global styles to this file, and also import other style files */
-@import '~stylight/stylight.scss';
+@import '~stylight-css/stylight.scss';
 
 * {
     font-family: 'Montserrat', sans-serif !important;
