@@ -1,3 +1,5 @@
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { NgModule } from '@angular/core';
@@ -7,6 +9,7 @@ import { ChatBoxComponent } from './chat-box.component';
 const MATERIAL_MODULES = [
   MatCardModule,
   MatButtonModule,
+  MatInputModule,
 ];
 
 @NgModule({
@@ -14,6 +17,7 @@ const MATERIAL_MODULES = [
   imports: [
     CommonModule,
     ...MATERIAL_MODULES,
+    FormsModule
   ],
   exports: [ChatBoxComponent]
 })

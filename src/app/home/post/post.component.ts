@@ -10,7 +10,7 @@ import { Post } from 'src/app/core/models/post';
 export class PostComponent implements OnInit {
   @Input() post: Post;
 
-  isCommentHidden: boolean = false;
+  isCommentHidden = true;
 
   constructor(private postService: PostService) { }
 
@@ -18,11 +18,11 @@ export class PostComponent implements OnInit {
   }
 
   computeTime(dateTime: Date) {
-    let fmt = (num: number) => {
+    const fmt = (num: number) => {
       return num > 9 ? num : '0' + num;
     }
-    let time = `${fmt(dateTime.getHours())}:${fmt(dateTime.getMinutes())}`;
-    let date = `${fmt(dateTime.getDate())}/${fmt(dateTime.getMonth() + 1)}/${dateTime.getFullYear()}`;
+    const time = `${fmt(dateTime.getHours())}:${fmt(dateTime.getMinutes())}`;
+    const date = `${fmt(dateTime.getDate())}/${fmt(dateTime.getMonth() + 1)}/${dateTime.getFullYear()}`;
     return { time, date }
   }
 

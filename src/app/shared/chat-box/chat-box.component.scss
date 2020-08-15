@@ -1,0 +1,17 @@
+.box-chat-container {
+    position: fixed;
+    right: 2rem;
+    bottom: 1rem;
+    z-index: 1;
+    width: 25%;
+
+    .chat-record-container {
+        height: 50vh;
+        overflow-y: auto;
+        .chat-record {
+            .chat-content {
+                word-break: break-word;
+            }
+        }
+    }
+}

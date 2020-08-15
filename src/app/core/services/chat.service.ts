@@ -8,4 +8,5 @@ export class ChatService {
   constructor() { }
 
   onChatBoxOpened = new EventEmitter<unknown>();
+  onChatBoxClosed = new EventEmitter<unknown>();
 }

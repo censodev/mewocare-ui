@@ -1,13 +1,43 @@
-<div class="fixed-bottom">
-    <mat-card class="p-0">
-        <div class="bg-primary rounded-top p-2">
-            <img class="rounded-circle object-fit-cover border border-white" width="30" height="30" src="https://vnn-imgs-f.vgcloud.vn/2019/11/09/07/meo-black-golden-1.jpg" alt="">
+<mat-card class="p-0 box-chat-container d-flex flex-column">
+    <div class="bg-primary rounded-top p-2 d-flex border-bottom border-white">
+        <img class="rounded-circle object-fit-cover border border-white" width="30" height="30" src="https://vnn-imgs-f.vgcloud.vn/2019/11/09/07/meo-black-golden-1.jpg" alt="">
+        <button class="ml-auto bg-transparent border-0 text-white" (click)="close()">
+            <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-x" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z"/>
+                <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z"/>
+            </svg>
+        </button>
+    </div>
+    <mat-card-content class="d-flex flex-column flex-grow-1">
+        <div class="p-2 flex-grow-1 chat-record-container" #chatRecordContainer>
+            <div class="chat-record d-flex">
+                <img class="rounded-circle object-fit-cover" width="30" height="30" src="https://vnn-imgs-f.vgcloud.vn/2019/11/09/07/meo-black-golden-1.jpg" alt="">
+                <div class="ml-1 mt-3 rounded chat-content p-2 bg-primary text-white">
+                    It is aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.
+                </div>
+            </div>
+            <div class="chat-record d-flex">
+                <img class="rounded-circle object-fit-cover" width="30" height="30" src="https://vnn-imgs-f.vgcloud.vn/2019/11/09/07/meo-black-golden-1.jpg" alt="">
+                <div class="ml-1 mt-3 rounded chat-content p-2 bg-primary text-white">
+                    It is aaa
+                </div>
+            </div>
+            <div class="chat-record d-flex justify-content-end">
+                <div class="mr-1 mt-3 rounded chat-content p-2 bg-secondary text-white">
+                    It is aaa
+                </div>
+            </div>
         </div>
-        <mat-card-content>
+        <div class="px-2 d-flex align-items-center">
+            <mat-form-field class="mt-auto flex-grow-1 px-1">
+                <input matInput [(ngModel)]="messageToSend" (keyup.enter)="sendMessage()">
+            </mat-form-field>
+            <button class="bg-transparent border-0">
+                <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-cursor-fill text-primary" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M14.082 2.182a.5.5 0 0 1 .103.557L8.528 15.467a.5.5 0 0 1-.917-.007L5.57 10.694.803 8.652a.5.5 0 0 1-.006-.916l12.728-5.657a.5.5 0 0 1 .556.103z"/>
+                </svg>
+            </button>
+        </div>
         
-        </mat-card-content>
-        <mat-card-actions>
-            <button mat-button>Ok</button>
-        </mat-card-actions>
-    </mat-card>
-</div>
+    </mat-card-content>
+</mat-card>

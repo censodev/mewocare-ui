@@ -12,6 +12,7 @@ export class AppComponent {
   constructor(private componentFactoryResolver: ComponentFactoryResolver,
               private chatService: ChatService) {
     this.chatService.onChatBoxOpened.subscribe(evt => this.openChatBox(evt));
+    this.chatService.onChatBoxClosed.subscribe(() => this.closeChatBox());
   }
 
   @ViewChild(ChatBoxContainerDirective) chatBoxContainerDirective: ChatBoxContainerDirective;
@@ -23,5 +24,9 @@ export class AppComponent {
     this.chatBoxContainerDirective.viewContainerRef.clear();
     const componentRef = this.chatBoxContainerDirective.viewContainerRef.createComponent(componentFactory);
     componentRef.instance.contactId = contactId;
+  }
+
+  closeChatBox() {
+    this.chatBoxContainerDirective.viewContainerRef.clear();
   }
 }
